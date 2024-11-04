@@ -1,3 +1,4 @@
+#import the required files 
 from engine import Value
 from nn import MLP
 
@@ -10,7 +11,7 @@ xs = [[2.0, 3.0, -1.0],
 ys = [0.0, 1.0, 1.0, 0.0]  # Target outputs
 
 n = MLP(3, [4, 4, 1])
-
+# for loop
 for k in range(20):
     ypred = [n(x) for x in xs]
     loss = sum((yout - ygt) ** 2 for ygt, yout in zip(ys, ypred))
@@ -23,5 +24,5 @@ for k in range(20):
     # Update weights
     for p in n.parameters():
         p.data += -0.1 * p.grad 
-
+#Main line to be run 
     print(k, loss.data)
