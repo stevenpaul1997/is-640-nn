@@ -54,7 +54,7 @@ class Value:
     
     def backward(self):
 
-        # topological order all of the children in the graph
+        
         topo = []
         visited = set()
         def build_topo(v):
@@ -65,7 +65,7 @@ class Value:
                 topo.append(v)
         build_topo(self)
 
-        # go one variable at a time and apply the chain rule to get its gradient
+        
         self.grad = 1
         for v in reversed(topo):
             v._backward()
